@@ -2,7 +2,7 @@
 
 ## 📦 Free eCommerce & Book API Aggregator
 
-A unified, sanitized, and production-ready REST API built using Express.js and Supabase, aggregating multiple free public APIs into a single consistent backend.
+Over 500+ unified, sanitized, and production-ready REST API built using Express.js and Supabase, aggregating multiple free public APIs into a single consistent backend.
 
 This project is ideal for:
 
