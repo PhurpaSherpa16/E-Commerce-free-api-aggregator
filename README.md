@@ -105,3 +105,41 @@ PORT=9000
 ```jsx
 npm run dev
 ```
+
+## 📝 API Documentation – Pagination Example
+Endpoint: /products
+Description: Fetch a list of products. Supports pagination using page and limit query parameters.
+- Query Parameters:
+Parameter	     Type	      Description	               Default
+- page 	     - number   - The page number to fetch	- 1
+- limit 	     - number   - Number of items per page	- 10
+
+### Example Request:
+- GET /products?page=1&limit=10
+- Response 
+```jsx 
+{
+  "page": 1,
+  "limit": 10,
+  "total": 50,
+  "products": [
+    {
+      "id": 1,
+      "name": "Product 1",
+      "price": 29.99,
+      "category": "electronics"
+    },
+    {
+      "id": 2,
+      "name": "Product 2",
+      "price": 19.99,
+      "category": "books"
+    }
+    // ...more products
+  ]
+}
+```
+### Usage Notes:
+- page=1&limit=10 → fetches the first 10 products
+- page=2&limit=5 → fetches the 6th to 10th products
+- If no page or limit is provided, default is page=1 and limit=10
