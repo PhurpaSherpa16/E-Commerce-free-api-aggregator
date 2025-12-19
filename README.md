@@ -65,15 +65,19 @@ Relational & normalized schema.
 
 ## 📡 API Endpoints
 ### Get Products
+- example : https://e-commerce-free-api-aggregator-l3mg.vercel.app/products
 ```jsx 
 GET /products
 GET /products?page=1&limit=10
 ```
 ### Get Single Product
+- example : https://e-commerce-free-api-aggregator-l3mg.vercel.app/product?id=1552
 ```jsx 
 GET /products/:id
 ```
 ### Filter by Category
+- example : https://e-commerce-free-api-aggregator-l3mg.vercel.app/category
+- example : https://e-commerce-free-api-aggregator-l3mg.vercel.app/product_category/category?name=beauty
 ```jsx 
 GET /products/category/:name
 ```
