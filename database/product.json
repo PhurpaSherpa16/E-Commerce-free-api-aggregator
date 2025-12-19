@@ -1,0 +1,22 @@
+{
+    "products": [
+        { "id": 1, "name": "Wireless Headphones", "price": 79.99 },
+        { "id": 2, "name": "USB-C Cable", "price": 12.99 },
+        { "id": 3, "name": "Portable Phone Charger", "price": 34.99 },
+        { "id": 4, "name": "Bluetooth Speaker", "price": 49.99 },
+        { "id": 5, "name": "Screen Protector", "price": 9.99 },
+        { "id": 6, "name": "Phone Case", "price": 19.99 },
+        { "id": 7, "name": "Laptop Stand", "price": 29.99 },
+        { "id": 8, "name": "Mechanical Keyboard", "price": 89.99 },
+        { "id": 9, "name": "Wireless Mouse", "price": 39.99 },
+        { "id": 10, "name": "USB Hub", "price": 24.99 },
+        { "id": 11, "name": "HDMI Cable", "price": 14.99 },
+        { "id": 12, "name": "Monitor Light Bar", "price": 59.99 },
+        { "id": 13, "name": "Webcam HD", "price": 44.99 },
+        { "id": 14, "name": "Microphone", "price": 69.99 },
+        { "id": 15, "name": "Phone Ring Stand", "price": 7.99 },
+        { "id": 16, "name": "Cable Organizer", "price": 11.99 },
+        { "id": 17, "name": "Desk Lamp", "price": 35.99 },
+        { "id": 18, "name": "Laptop Cooling Pad", "price": 54.99 }
+    ]
+}
