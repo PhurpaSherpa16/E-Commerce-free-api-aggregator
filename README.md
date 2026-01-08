@@ -4,18 +4,13 @@
 
 Over 500+ unified, sanitized, and production-ready REST API built using Express.js and Supabase, aggregating multiple free public APIs into a single consistent backend.
 
-This project is ideal for:
-
-Frontend developers
-
-Practice projects
-
-Prototyping eCommerce apps
-
-Learning backend architecture
+This project is ideal for (More details at last):
+- Frontend developers
+- Practice projects
+- Prototyping eCommerce apps
+- Learning backend architecture
 
 ## 🎯 Project Goal
-
 The main goal of this project is to provide a free, simple, and unified product data API that developers can use for learning, prototyping, and building real-world demo applications without worrying about backend infrastructure.
 
 ## 🚀 Features
@@ -140,7 +135,7 @@ Parameter	     Type	      Description	               Default
 - page=2&limit=5 → fetches the 0 to 5th products
 - If no page or limit is provided, default is page=1 and limit=10
 
-## ⛓️‍💥 Where You Can Use This API
+## 🍎 Where You Can Use This API
 This API is designed to help developers quickly build and test e-commerce–related features without setting up their own backend or database. It can be used in a wide range of applications, including:
 
 ### 🛒 Frontend E-Commerce Projects
