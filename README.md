@@ -14,6 +14,10 @@ Prototyping eCommerce apps
 
 Learning backend architecture
 
+## 🎯 Project Goal
+
+The main goal of this project is to provide a free, simple, and unified product data API that developers can use for learning, prototyping, and building real-world demo applications without worrying about backend infrastructure.
+
 ## 🚀 Features
 
 🔗 Aggregates multiple free public APIs
@@ -51,17 +55,6 @@ Express REST API
      ↓
 Client / Frontend 
 ```
-
-## 🗃️ Database Design (Supabase)
-- products
-- product_images
-- tags
-- product_tags
-- books
-- authors
-- book_author
-
-Relational & normalized schema.
 
 ## 📡 API Endpoints
 ### Get Products
@@ -144,5 +137,48 @@ Parameter	     Type	      Description	               Default
 ```
 ### Usage Notes:
 - page=1&limit=10 → fetches the first 10 products
-- page=2&limit=5 → fetches the 6th to 10th products
+- page=2&limit=5 → fetches the 0 to 5th products
 - If no page or limit is provided, default is page=1 and limit=10
+
+## ⛓️‍💥 Where You Can Use This API
+This API is designed to help developers quickly build and test e-commerce–related features without setting up their own backend or database. It can be used in a wide range of applications, including:
+
+### 🛒 Frontend E-Commerce Projects
+- Product listing pages
+- Category-based product filtering
+- Search and sorting features
+- Pagination and infinite scrolling UI
+- Product detail pages
+
+Ideal for React, Next.js, Vue, or any frontend framework that needs mock or demo product data.
+
+### 📱 Practice & Learning Projects
+- Practicing REST API integration
+- Learning pagination, filtering, and query parameters
+- Building CRUD-style UI (read-only data)
+- College or portfolio projects
+
+Great for beginners who want to focus on frontend and API handling instead of database setup.
+
+### 🧪 Testing & Prototyping
+- UI/UX prototyping
+- Testing API-driven components
+- Performance testing with paginated data
+- Mock backend for hackathons or MVPs
+
+Helps teams move faster during early-stage development.
+
+### 🔗 Backend Integration & Middleware
+- Aggregating multiple free APIs into a single source
+- Normalizing product data formats
+- Acting as a middleware layer between frontend and third-party APIs
+
+Useful for projects that need consistent data from multiple providers.
+
+### 📊 Data Visualization & Dashboards
+- Product analytics dashboards
+- Category-wise product charts
+- Price comparison tools
+- Inventory-style UI simulations
+
+Can be used to build admin-style dashboards or analytics demos.
