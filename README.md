@@ -65,7 +65,10 @@ Relational & normalized schema.
 
 ## 📡 API Endpoints
 ### Get Products
+Pagination is enabled by default with page=1 and limit=10.
+To fetch a different set of results, specify the desired page and limit values in the query parameters (see Example 2).
 - example : https://e-commerce-free-api-aggregator-l3mg.vercel.app/products
+- example : https://e-commerce-free-api-aggregator-l3mg.vercel.app/products?page=1&limit=10
 ```jsx 
 GET /products
 GET /products?page=1&limit=10
