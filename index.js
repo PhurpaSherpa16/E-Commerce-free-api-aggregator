@@ -33,7 +33,7 @@ app.use((err, req, res, next) => {
 
 const PORT = process.env.PORT || 9000
 const BASE_URL = process.env.NODE_ENV === "production"
-    ? `https://${process.env.VERCEL_URL}`
+    ? `https://${process.env.VERCEL_URL || 'e-commerce-free-api-aggregator.vercel.app'}`
     : "http://localhost:9000"
 
 
