@@ -19,7 +19,6 @@ export async function insertToSupabase(item) {
             thumbnail_image_url : item.main.thumbnail || '',
             source : item.main.source || '',
             external_id : item.main.external_id !== undefined?  item.main.external_id : null,
-            type : item.main.type || '',
             rating : item.main.rating !== undefined? item.main.rating : null
         })
         .select()
@@ -35,6 +34,7 @@ export async function insertToSupabase(item) {
         const {data: insertedBook, error:BookError} = await supabase.from('book').insert({
             product_id_fk : tempProductId,
             author : item.extensions.author || 'unknown',
+            book_category: item.extensions.book_category || 'unknown',
             subtitle : item.extensions.subtitle || 'unknown',
             publisher : item.extensions.publisher || 'unknown',
             publisheddate : item.extensions.publishedDate !== undefined? normalizePublishedDate(item.extensions.publishedDate) : null,

@@ -72,6 +72,16 @@ GET /products/:id
 ```jsx 
 GET /products/category/:name
 ```
+### Search
+- example : https://e-commerce-free-api.vercel.app/products/search?q=apple
+```jsx 
+GET /products/search?q=apple
+```
+### Featured products
+- example : https://e-commerce-free-api.vercel.app/products/featured
+```jsx 
+GET /products/featured
+```
 
 ## 🛠️ Tech Stack
 - Node.js
