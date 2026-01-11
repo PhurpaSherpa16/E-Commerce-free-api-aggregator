@@ -55,30 +55,30 @@ Client / Frontend
 ### Get Products
 Pagination is enabled by default with page=1 and limit=10.
 To fetch a different set of results, specify the desired page and limit values in the query parameters (see Example 2).
-- example : https://e-commerce-free-api.vercel.app/products
-- example : https://e-commerce-free-api.vercel.app/products?page=1&limit=10
+- example : https://e-commerce-free-api-aggregator.vercel.app/products
+- example : https://e-commerce-free-api-aggregator.vercel.app/products?page=1&limit=10
 ```jsx 
 GET /products
 GET /products?page=1&limit=10
 ```
 ### Get Single Product
-- example : https://e-commerce-free-api.vercel.app/product?id=1552
+- example : https://e-commerce-free-api-aggregator.vercel.app/product?id=1552
 ```jsx 
 GET /products/:id
 ```
 ### Filter by Category
-- example : https://e-commerce-free-api.vercel.app/category
-- example : https://e-commerce-free-api.vercel.app/product_category/category?name=beauty
+- example : https://e-commerce-free-api-aggregator.vercel.app/category
+- example : https://e-commerce-free-api-aggregator.vercel.app/product_category/category?name=beauty
 ```jsx 
 GET /products/category/:name
 ```
 ### Search
-- example : https://e-commerce-free-api.vercel.app/products/search?q=apple
+- example : https://e-commerce-free-api-aggregator.vercel.app/products/search?q=apple
 ```jsx 
 GET /products/search?q=apple
 ```
 ### Featured products
-- example : https://e-commerce-free-api.vercel.app/products/featured
+- example : https://e-commerce-free-api-aggregator.vercel.app/products/featured
 ```jsx 
 GET /products/featured
 ```
