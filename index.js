@@ -41,6 +41,7 @@
 // app.listen(PORT, ()=>{
 //     console.log(`📊 API running at ${BASE_URL}/products`)
 // })
+import 'dotenv/config'
 import express from 'express'
 import cors from 'cors'
 import router from './routes/ProductRoutes.js'
@@ -72,7 +73,7 @@ app.use((err, req, res, next) => {
   })
 })
 
-// For local development
+// For local development only
 if (process.env.NODE_ENV !== 'production') {
   const PORT = 9000
   app.listen(PORT, ()=>{
