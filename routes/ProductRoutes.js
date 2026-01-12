@@ -1,10 +1,10 @@
 import express from 'express'
 import { GetCategoryOnly} from '../controller/GetProductCategory.js'
 import { GetAllProducts } from '../controller/GetAllProducts.js'
-import { GetSingleProduct } from '../controller/getSingleProduct.js'
 import { GetProductByCategory } from '../controller/GetProductByCategory.js'
 import { GetSearchProduct } from '../controller/GetSearchProduct.js'
 import { GetFeaturedProducts } from '../controller/GetFeaturedProducts.js'
+import { GetSingleProduct } from '../controller/GetSingleProdct.js'
 
 const router = express.Router()
 
