@@ -5,7 +5,7 @@ import { supabase } from "../utils/supabaseClient.js";
 export const GetFeaturedProducts = CatchAsync(async(req, res, next)=>{
     const {limit, page, start, end} = pagination(req, 10, 50)
 
-    const returnData = 'title, category, product_id, price, thumbnail_image_url, stock'
+    const returnData = 'title, category, product_id, price, thumbnail_image_url, stock, description'
 
     const {data: tempData, error, count} = await supabase.from('featured_products')
     .select(`priority, start_at, end_at, products(${returnData}, product_images(image_url))`, {count: "exact"})
