@@ -8,7 +8,7 @@ export const GetFeaturedProducts = CatchAsync(async(req, res, next)=>{
     const returnData = 'title, category, product_id, price, thumbnail_image_url, stock'
 
     const {data: tempData, error, count} = await supabase.from('featured_products')
-    .select(`priority, start_at, end_at, products(${returnData})`, {count: "exact"})
+    .select(`priority, start_at, end_at, products(${returnData}, product_images(image_url))`, {count: "exact"})
     .order('priority', {ascending: false}).range(start, end)
 
     if(error){
@@ -25,7 +25,8 @@ export const GetFeaturedProducts = CatchAsync(async(req, res, next)=>{
     }
 
     const result = tempData.map(item => 
-        ({...item.products, 
+        ({...item.products,
+        product_images: item.products.product_images?.[0]?.image_url || null,
         featured_priority: item.priority, 
         featured_start_at: item.start_at, 
         featured_end_at: item.end_at})
