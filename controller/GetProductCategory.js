@@ -6,12 +6,28 @@ import { supabase } from "../utils/supabaseClient.js";
 // can use try catch but dont use CatchAsync()
 
 export const GetCategoryOnly = CatchAsync( async(req, res, next) =>{
-    const {data: tempData, error:CategoryFetchError} = await supabase.from('products').select('category')
-    const tempResult = [...new Set(tempData.map(i => i.category.toLowerCase()))]
+    const {data: tempData, error:CategoryFetchError} = await supabase.from('category').select('*').order('rating',{ascending:false})
+
+    if(CategoryFetchError){
+        return res.status(500).json({
+            success : false,
+            message : 'Failed to fetch category',
+            error : CategoryFetchError.message
+        })
+    }
+    if(!tempData || tempData.length ===0){
+        return res.status(404).json({
+            success : false,
+            message : 'No category found'
+        })
+    }
+
+    console.log(tempData)
+
     const returnThisData = {
         success : true,
-        result : tempResult
+        result : tempData
     }
-    console.log(tempData)
+
     res.json(returnThisData)
 })

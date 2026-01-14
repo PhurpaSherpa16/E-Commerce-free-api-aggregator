@@ -47,8 +47,6 @@ export const GetSingleProduct = CatchAsync(async (req, res, next) =>{
     const tagsList = tagData ? tagData.map(item => item.tags.tag_name) : []
     tempData.tags = tagsList
 
-    console.log(tagData)
-
     // Fetching Book details if product type is book
     let bookData = null
     let BookDataError = null
