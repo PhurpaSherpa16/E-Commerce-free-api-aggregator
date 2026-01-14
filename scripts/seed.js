@@ -1,7 +1,6 @@
 import { SeedProduct } from "./seedProduct.js";
 
 async function Seed(){
-    console.log('hello')
     try {
         console.log('loading...')
         const data = await SeedProduct()
@@ -11,5 +10,4 @@ async function Seed(){
         console.log('seeding failed: ',error)
     }
 }
-
 Seed()

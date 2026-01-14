@@ -12,5 +12,6 @@ export const GetCategoryOnly = CatchAsync( async(req, res, next) =>{
         success : true,
         result : tempResult
     }
+    console.log(tempData)
     res.json(returnThisData)
 })

@@ -5,6 +5,7 @@ import { GetProductByCategory } from '../controller/GetProductByCategory.js'
 import { GetSearchProduct } from '../controller/GetSearchProduct.js'
 import { GetFeaturedProducts } from '../controller/GetFeaturedProducts.js'
 import { GetSingleProduct } from '../controller/GetSingleProdct.js'
+import { GetProductByTags } from '../controller/GetProductByTags.js'
 
 const router = express.Router()
 
@@ -25,5 +26,8 @@ router.get('/products/search', GetSearchProduct)
 
 // Get featured products
 router.get('/products/featured', GetFeaturedProducts)
+
+// Get product by tags
+router.get('/products/tags', GetProductByTags)
 
 export default router

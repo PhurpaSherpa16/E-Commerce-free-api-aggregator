@@ -62,7 +62,7 @@ GET /products
 GET /products?page=1&limit=10
 ```
 ### Get Single Product
-- example : https://e-commerce-free-api-aggregator.vercel.app/product?id=1552
+- example : https://e-commerce-free-api-aggregator.vercel.app/product?id=3047
 ```jsx 
 GET /products/:id
 ```

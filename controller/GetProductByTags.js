@@ -2,13 +2,13 @@ import CatchAsync from "../utils/CatchAsync.js"
 import { pagination } from "../utils/pagination.js"
 import { supabase } from "../utils/supabaseClient.js"
 
-export const GetProductByCategory = CatchAsync(async (req, res, next) =>{
+export const GetProductByTags = CatchAsync(async (req, res, next) =>{
     const { limit, page, start, end } = pagination(req, 10, 50)
 
-    const product_category = String(req.query.name)
+    const tag = String(req.query.name)
 
-    if (!product_category) {
-        const err = new Error("Invalid product category")
+    if (!tag) {
+        const err = new Error("Invalid tag")
         err.status = 400
         return next(err)
     }
@@ -16,9 +16,10 @@ export const GetProductByCategory = CatchAsync(async (req, res, next) =>{
     const returnData = 'title, category, product_id, price, thumbnail_image_url, stock, description'
 
     const {data : tempData, error: SingleDataError, count} = await supabase.from('products')
-            .select(returnData, { count: 'exact' }).eq('category', product_category).range(start, end)
+            .select(`${returnData}, product_tags!inner(tags!inner(tag_name))`, { count: 'exact' })
+            .eq('product_tags.tags.tag_name', tag)
+            .range(start, end)
             
-
     if(SingleDataError){
         const err = new Error('Error fetching products for the specified category.')
         SingleDataError.status = 500
@@ -31,13 +32,20 @@ export const GetProductByCategory = CatchAsync(async (req, res, next) =>{
         return next(err)
     }
 
+    const tempResult = tempData.map(item =>({
+        ...item, 
+        product_tags : item.product_tags.map(tag => tag.tags.tag_name)
+    }))
+
+    console.log(tempResult)
+
     const returnThisData = {
         success : true,
         total : count,
         page : page,
         total_items : tempData.length,
         total_pages : Math.ceil(count/limit),
-        result : tempData
+        result : tempResult
     }
 
     res.json(returnThisData);

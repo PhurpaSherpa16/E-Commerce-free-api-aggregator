@@ -19,7 +19,7 @@ export async function insertToSupabase(item) {
             thumbnail_image_url : item.main.thumbnail || '',
             source : item.main.source || '',
             external_id : item.main.external_id !== undefined?  item.main.external_id : null,
-            rating : item.main.rating !== undefined? item.main.rating : null
+            rating : item.main.rating !== undefined? item.main.rating : 0
         })
         .select()
         .single()
@@ -29,7 +29,32 @@ export async function insertToSupabase(item) {
     productInserted++
 
     const tempProductId = insertedProduct.product_id
+    const tempCategoryImage = insertedProduct.thumbnail_image_url
+    const rating = Math.round(insertedProduct.rating)
+    const categoryToSupabase = item.main.category || []
+
+    // Insert categories
+    let tempCategoryId
+
+    let {data : existingCategory, error: categoryError} = await supabase.from('category').select('*').eq('category_name', categoryToSupabase).maybeSingle()
     
+    if(categoryError) throw categoryError
+    
+    if(existingCategory){
+        tempCategoryId = existingCategory.category_id
+    }
+    else{
+        let {data : newCategory, error: categoryError} = await supabase.from('category')
+        .insert({category_name : categoryToSupabase, rating: rating, image_url: tempCategoryImage}).select().single()
+        if(categoryError) throw categoryError
+        tempCategoryId = newCategory.category_id
+    }
+
+    const {error : productCategoryError} = await supabase.from('product_category').insert({product_id_fk : tempProductId, category_id_fk : tempCategoryId})
+    if(productCategoryError) throw productCategoryError
+    relationInserted++
+
+    // Insert book details if product is a book
     if(item.type === 'book'){
         const {data: insertedBook, error:BookError} = await supabase.from('book').insert({
             product_id_fk : tempProductId,
@@ -70,6 +95,7 @@ export async function insertToSupabase(item) {
         }  
     }
 
+    // Insert tags
     for (const tag of item.main.tags || []){
         let tempTagId
         let {data : exisitingTag, error:tagError} = await supabase.from('tags').select('*').eq('tag_name', tag).maybeSingle()
@@ -90,13 +116,13 @@ export async function insertToSupabase(item) {
         relationInserted++
     }
 
+    // Insert product images
     for(const image of item.main.images){
         let {error: imageError} = await supabase.from('product_images').insert({
             product_id_fk : tempProductId, image_url : image})
         if(imageError) throw imageError
         relationInserted++
     }
-
         
     return {
         success : true, 
