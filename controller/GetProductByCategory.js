@@ -19,20 +19,22 @@ export const GetProductByCategory = CatchAsync(async (req, res, next) =>{
     // checking if category is number e.g http://localhost:9000/product/category?name=126
     if(isNumber){
         const category_id = Number(product_category)
-        const {data, error: SingleDataError, count} = await supabase.from('products')
-                .select(`${returnData}, product_category!inner(category!inner(category_id))`)
+        const result = await supabase.from('products')
+                .select(`${returnData}, product_category!inner(category!inner(category_id))`, { count: 'exact' })
                 .eq('product_category.category.category_id', category_id)
                 .range(start, end)
-        tempData = data
+        tempData = result.data
+        count = result.count
     }
     // if category is string e.g http://localhost:9000/product/category?name=Electronics
     else{
         const category_name = product_category.toLowerCase()
-        const {data, error: SingleDataError} = await supabase.from('products')
-            .select(`${returnData}, product_category!inner(category!inner(category_name))`)
+        const result = await supabase.from('products')
+            .select(`${returnData}, product_category!inner(category!inner(category_name))`, { count: 'exact' })
             .eq('product_category.category.category_name', category_name)
             .range(start, end)
-        tempData = data
+        tempData = result.data
+        count = result.count
     }
 
     if(SingleDataError){
@@ -63,10 +65,10 @@ export const GetProductByCategory = CatchAsync(async (req, res, next) =>{
 
     const returnThisData = {
         success : true,
-        total : tempData.length,
+        total : count,
         page : page,
         total_items : tempResult.length,
-        total_pages : Math.ceil(tempData.length/limit),
+        total_pages : Math.ceil(count/limit),
         result : tempResult
     }
 

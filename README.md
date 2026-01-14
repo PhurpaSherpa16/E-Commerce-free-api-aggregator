@@ -70,6 +70,7 @@ GET /products/:id
 - example : https://e-commerce-free-api-aggregator.vercel.app/category
 - example : https://e-commerce-free-api-aggregator.vercel.app/product/category?q=beauty
 - example : https://e-commerce-free-api-aggregator.vercel.app/product/category?q=126
+- example : https://e-commerce-free-api-aggregator.vercel.app/product/category?q=book&page=1&limit=10
 ```jsx 
 GET /products/category/:name
 ```
