@@ -4,7 +4,7 @@ import { supabase } from "../utils/supabaseClient.js"
 
 export const GetProductByCategory = CatchAsync(async (req, res, next) =>{
     const { limit, page, start, end } = pagination(req, 10, 50)
-    const product_category = req.query.name
+    const product_category = req.query.q
     
     if (!product_category) {
         const err = new Error("Invalid product category")
@@ -20,7 +20,7 @@ export const GetProductByCategory = CatchAsync(async (req, res, next) =>{
     if(isNumber){
         const category_id = Number(product_category)
         const {data, error: SingleDataError, count} = await supabase.from('products')
-                .select(`${returnData}, product_category!inner(category!inner(category_id))`, { count: 'exact' })
+                .select(`${returnData}, product_category!inner(category!inner(category_id))`)
                 .eq('product_category.category.category_id', category_id)
                 .range(start, end)
         tempData = data
@@ -28,8 +28,8 @@ export const GetProductByCategory = CatchAsync(async (req, res, next) =>{
     // if category is string e.g http://localhost:9000/product/category?name=Electronics
     else{
         const category_name = product_category.toLowerCase()
-        const {data, error: SingleDataError, count} = await supabase.from('products')
-            .select(`${returnData}, product_category!inner(category!inner(category_name))`, { count: 'exact' })
+        const {data, error: SingleDataError} = await supabase.from('products')
+            .select(`${returnData}, product_category!inner(category!inner(category_name))`)
             .eq('product_category.category.category_name', category_name)
             .range(start, end)
         tempData = data
@@ -63,10 +63,10 @@ export const GetProductByCategory = CatchAsync(async (req, res, next) =>{
 
     const returnThisData = {
         success : true,
-        total : count,
+        total : tempData.length,
         page : page,
         total_items : tempResult.length,
-        total_pages : Math.ceil(count/limit),
+        total_pages : Math.ceil(tempData.length/limit),
         result : tempResult
     }
 
