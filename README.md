@@ -68,8 +68,8 @@ GET /products/:id
 ```
 ### Filter by Category
 - example : https://e-commerce-free-api-aggregator.vercel.app/category
-- example : https://e-commerce-free-api-aggregator.vercel.app/product_category/category?q=beauty
-- example : https://e-commerce-free-api-aggregator.vercel.app/product_category/category?q=126
+- example : https://e-commerce-free-api-aggregator.vercel.app/product/category?q=beauty
+- example : https://e-commerce-free-api-aggregator.vercel.app/product/category?q=126
 ```jsx 
 GET /products/category/:name
 ```
